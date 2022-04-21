@@ -1,0 +1,28 @@
+{% extends 'flatpages/default.html' %}
+
+{% block content %}
+    <style>
+    body{
+        background-color: #a0e69e
+       }
+    </style>
+    <h3>Наши донатеры:</h3>
+    <hr>
+    {% if contributor %}
+        <table align='center'>
+        {% for item in contributor %}
+            <tr>
+                <td>
+                    <li>{{ item.full_name }}</li>
+                </td>
+                <td>
+                    - {{ item.donated_amount }}
+                </td>
+            </tr>
+        {% endfor %}
+        </table>
+    {% else %}
+        <h2>На данный момент никто не поддержал проет. :(</h2>
+    {% endif %}
+    <hr>
+{% endblock content %}
