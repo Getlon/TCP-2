@@ -1,0 +1,35 @@
+{% extends 'flatpages/default.html' %}
+
+{% load static %}
+
+{% load custom_filters %}
+ 
+{% block title %} Product list {% endblock title %}
+ 
+{% block content %}
+    <h1>Полная информация о событии:</h1>
+    {% if item %}
+        <table align="center">
+            <tr>
+                <td rowspan="2">
+                    <img src="{% static item.image|correct_url %}" width="300" height="250">
+                </td>
+                <td>
+                    <h3>{{ item.title }} {{ item.created_date|date:'D M Y' }}</h3>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>{{ item.body }}</p>
+                </td>
+            </tr>
+        </table>
+    {% else %}
+        <h2>События нет!</h2>
+    {% endif %}
+<style>
+body{
+    background-color: #a0e69e
+   }
+</style>
+{% endblock content %}

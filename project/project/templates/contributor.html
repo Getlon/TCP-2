@@ -1,12 +1,14 @@
 {% extends 'flatpages/default.html' %}
 
+{% load static %}
+
 {% block content %}
     <style>
     body{
         background-color: #a0e69e
        }
     </style>
-    <h3>Наши донатеры:</h3>
+    <h3><img src="{% static 'images/coin.png' %}" width="70" height="70">Наши донатеры:<img src="{% static 'images/coin.png' %}" width="70" height="70"></h3>
     <hr>
     {% if contributor %}
         <table align='center'>

@@ -1,0 +1,54 @@
+{% extends 'flatpages/default.html' %}
+
+{% load static %}
+
+{% load custom_filters %}
+ 
+{% block title %} Product list {% endblock title %}
+ 
+{% block content %}
+    <h1>Все события.</h1>
+    <h2>Всего событий: {{ item|length }}</h2>
+    <hr>
+    {% if item %}
+        <table align="center">
+            <tr>
+                <td>
+                    Изображение
+                </td>
+                <td>
+                    Заголовок
+                </td>
+                <td>
+                    Основная информация
+                </td>
+                <td>
+                    Дата публикации
+                </td>
+            </tr>
+        {% for item in item %}
+            <tr>
+                <td>
+                    <img src="{% static item.image|correct_url %}" width="120" height="100">
+                </td>
+                <td>
+                    {{ item.title }}
+                </td>
+                <td>
+                    <a href="{% url 'event_detail' item.id %}">{{ item.body|len_restrict }}</a>
+                </td>
+                <td>
+                    {{ item.created_date|date:'D M Y' }}
+                </td>
+            </tr>
+        {% endfor %}
+        </table>
+    {% else %}
+        <h2>Событий нет!</h2>
+    {% endif %}
+<style>
+body{
+    background-color: #a0e69e
+   }
+</style>
+{% endblock content %}
